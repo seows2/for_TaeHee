@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import Divider from "./components/Divider";
 import FlowerRain from "./components/FlowerRain";
-import Gallery from "./components/Gallery";
 import Intro from "./components/Intro";
 import GlobalStyle from "./styles/globalStyle";
 
@@ -20,6 +19,8 @@ function App() {
       <GlobalStyle />
       <Main>
         <FlowerRain />
+        <Intro />
+        <Divider />
       </Main>
     </>
   );
