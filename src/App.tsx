@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Celebrate from "./components/Celebrate";
 import Divider from "./components/Divider";
 import FlowerRain from "./components/FlowerRain";
 import Gallery from "./components/Gallery";
@@ -24,6 +25,7 @@ function App() {
         <Divider />
         <Gallery />
         <Divider />
+        <Celebrate />
       </Main>
     </>
   );

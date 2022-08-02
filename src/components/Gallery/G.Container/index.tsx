@@ -2,16 +2,19 @@ import React, { FC, useEffect, useState, UIEvent, useRef } from "react";
 import * as S from "./style";
 
 const GalleryContainer: FC = () => {
-  const renderImages = (n = 12) =>
-    Array.from({ length: n }, (_, i) => i).map((num, idx) => {
+  const ContainerRef = useRef<HTMLDivElement>(null);
+  const [scrollX, setScrollX] = useState(0);
+
+  const renderImages = Array.from({ length: 12 }, (_, i) => i).map(
+    (num, idx) => {
       const transfromStyle = `translateX(${
-        (((scrollX - (num - 1) * 250) / 4.8 + 50 > 100
-          ? 100
+        (((scrollX - (num - 1) * 250) / 4.8 + 50 > 200
+          ? 200
           : (scrollX - (num - 1) * 250) / 4.8 + 50 < 0
           ? 0
           : (scrollX - (num - 1) * 250) / 4.8 + 50) /
-          100) *
-        -55
+          200) *
+        -100
       }px)`;
 
       return (
@@ -28,9 +31,8 @@ const GalleryContainer: FC = () => {
           <S.GalleryArch />
         </S.GalleryItem>
       );
-    });
-  const ContainerRef = useRef<HTMLDivElement>(null);
-  const [scrollX, setScrollX] = useState(0);
+    },
+  );
 
   useEffect(() => {
     const { current } = ContainerRef;
@@ -45,7 +47,7 @@ const GalleryContainer: FC = () => {
 
   return (
     <S.GalleryContainer ref={ContainerRef} onScroll={handleScroll}>
-      <S.GalleryInner>{renderImages()}</S.GalleryInner>
+      <S.GalleryInner>{renderImages}</S.GalleryInner>
     </S.GalleryContainer>
   );
 };
